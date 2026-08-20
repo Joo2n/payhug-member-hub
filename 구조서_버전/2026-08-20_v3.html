@@ -70,7 +70,7 @@ ul,ol{margin:8px 0 8px 20px;padding:0}li{margin:6px 0}
 <div class="wrap">
 <aside>
   <h1>회원관리 계약 체인 구조서</h1>
-  <p>살아있는 구조 설명서 · v4 · 2026-08-20</p>
+  <p>살아있는 구조 설명서 · v3 · 2026-08-19</p>
   <a href="#docinfo">0. 문서 정보 · 상태 범례</a>
   <a href="#onepage">1. 핵심 구조 한 장</a>
   <a href="#dist">2. 두 가지 배분 구조</a>
@@ -81,7 +81,7 @@ ul,ol{margin:8px 0 8px 20px;padding:0}li{margin:6px 0}
   <a href="#history">7. 이력·검증</a>
   <a href="#daou">8. 다우·제휴사 트랙</a>
   <a href="#data">9. 데이터 모델</a>
-  <a href="#open">10. 결정 현황 · 미결 잔여</a>
+  <a href="#open">10. 미결 결정 9건</a>
   <a href="#outputs">11. 산출물 지도 · Figma 매트릭스</a>
 </aside>
 <main>
@@ -89,21 +89,19 @@ ul,ol{margin:8px 0 8px 20px;padding:0}li{margin:6px 0}
 <div class="hero">
   <details class="verbox"><summary>이전 버전 보기 ▾</summary>
     <div class="verlist">
-      <a href="구조서_버전/2026-08-20_v3.html">2026-08-20 · v3 <span class="cur">— 직전 판 스냅샷</span></a>
-      <a href="구조서_버전/2026-08-19_v2.html">2026-08-19 · v2 <span class="cur">— 이전 판 스냅샷</span></a>
+      <a href="구조서_버전/2026-08-19_v2.html">2026-08-19 · v2 <span class="cur">— 직전 판 스냅샷</span></a>
       <a href="구조서_버전/2026-08-19_v1.html">2026-08-19 · v1 <span class="cur">— 최초판 스냅샷</span></a>
     </div>
   </details>
   <div class="eyebrow">LIVING STRUCTURE DOCUMENT · 회원관리 계약 체인</div>
   <h2>관계(Edge)가 요율을 갖는 계약 체인 —<br/>현재 확정 상태 기준 정본</h2>
-  <p>정산상품이라는 중간 개념 없이, 회원 간 <b>직속 상위 관계 하나하나가 계약 수수료율 세트</b>를 갖는다. 배분 구조는 <b>폭포수</b>(일반 파트너 체인)와 <b>병렬 배분</b>(다우·투자자 직계약) 두 가지다. 이 문서는 결정 레지스터(2026-08-19)와 결정 콘솔 제출 답변(<b>9문항 — 확정 8 · 유력 1</b>), 8/20 슬랙 이슈 대조(<b>12항목 — 반영 8 · 대기 4</b>)를 현재 상태 그대로 서술하는 팀 공유용 구조 설명서다.</p>
+  <p>정산상품이라는 중간 개념 없이, 회원 간 <b>직속 상위 관계 하나하나가 계약 수수료율 세트</b>를 갖는다. 배분 구조는 <b>폭포수</b>(일반 파트너 체인)와 <b>병렬 배분</b>(다우·투자자 직계약) 두 가지다. 이 문서는 결정 레지스터(2026-08-19)에 등재된 <b>확정 15건 · 유력 2건 · 미결 7건</b>을 현재 상태 그대로 서술하는 팀 공유용 구조 설명서다.</p>
   <div class="chips">
-    <span class="chip">콘솔 결정 9문항 — 확정 8 · 유력 1</span>
-    <span class="chip">8/20 슬랙 이슈 12항목 — 반영 8 · 대기 4</span>
+    <span class="chip">확정 15 · 유력 2 · 미결 7</span>
     <span class="chip">요율 숫자 전부 예시 — 실값 미확정(충돌 C1)</span>
     <span class="chip">폭포수 / 병렬 두 배분 구조</span>
     <span class="chip">'최상위·파트너'는 폭포수 전용 용어</span>
-    <span class="chip">v4 · 2026-08-20</span>
+    <span class="chip">v3 · 2026-08-19</span>
   </div>
 </div>
 
@@ -111,11 +109,11 @@ ul,ol{margin:8px 0 8px 20px;padding:0}li{margin:6px 0}
   <div class="title"><span class="n">0</span><h3>문서 정보 · 상태 범례</h3></div>
   <div class="tblwrap"><table>
     <tbody>
-      <tr><td style="width:180px"><b>버전</b></td><td>v4 · 2026-08-20 — 이 문서는 작업 진행에 따라 계속 갱신되며, 각 시점 스냅샷은 <b>구조서_버전/</b> 폴더에 보존된다.</td></tr>
+      <tr><td style="width:180px"><b>버전</b></td><td>v3 · 2026-08-19 — 이 문서는 작업 진행에 따라 계속 갱신되며, 각 시점 스냅샷은 <b>구조서_버전/</b> 폴더에 보존된다.</td></tr>
       <tr><td><b>성격</b></td><td>회원관리 계약 체인의 <b>현재 확정 상태</b>를 서술하는 팀 공유용 정본. 결정의 원문·근거는 결정 레지스터가 정본이다.</td></tr>
-      <tr><td><b>결정 정본</b></td><td><code>payhug-spec/_pipeline/member_redesign/decisions_0819.md</code> — 사용자 답변(2026-08-19) + 회의록 "8.14 원장/계약 구조" + 콘솔 제출 답변(2026-08-19 18:11) + 8/20 슬랙 이슈 반영사항</td></tr>
-      <tr><td><b>함께 보는 문서</b></td><td>작업 명세 <code>spec.md</code>(요율 세트 정의) · 상태 카탈로그 <code>states_catalog.md</code>(화면 케이스 Flow A~I) · 코드 분석 <code>code_analysis.md</code>(재사용·영향)</td></tr>
-      <tr><td><b>실동작 기준</b></td><td>인터랙티브 프로토타입 <code>v2.html</code>(정책 반영판 — 기준판 · 58상태) · <code>index.html</code>(계약 위치 라디오판 — 비교용 보존) — §11 산출물 지도 · 공개 공유 허브 <a href="https://joo2n.github.io/payhug-member-hub/">joo2n.github.io/payhug-member-hub</a></td></tr>
+      <tr><td><b>결정 정본</b></td><td><code>payhug-spec/_pipeline/member_redesign/decisions_0819.md</code> — 사용자 답변(2026-08-19) + 회의록 "8.14 원장/계약 구조" 반영</td></tr>
+      <tr><td><b>함께 보는 문서</b></td><td>작업 명세 <code>spec.md</code>(요율 세트 정의) · 상태 카탈로그 <code>states_catalog.md</code>(화면 케이스 Flow A~H) · 코드 분석 <code>code_analysis.md</code>(재사용·영향)</td></tr>
+      <tr><td><b>실동작 기준</b></td><td>인터랙티브 프로토타입 <code>v2.html</code>(정책 반영판 — 기준판) · <code>index.html</code>(계약 위치 라디오판 — 비교용 보존) — §11 산출물 지도</td></tr>
     </tbody>
   </table></div>
   <h4>상태 범례 — 문서 전체 공통</h4>
@@ -227,7 +225,7 @@ ul,ol{margin:8px 0 8px 20px;padding:0}li{margin:6px 0}
   </ul>
   <p class="src">[출처: 회의록 §3 — M4]</p>
   <div class="call warn"><b>단정 표기 재검토 <span class="bd conf">확정(지정)</span>:</b> "채권매입수수료 = 면세사업"이라는 단정 표기는 조건부(사슬 등장 여부에 따름)이므로 정책서에서 재검토 대상이다.<span class="src">[출처: 회의록 §3 — M6]</span></div>
-  <div class="call"><b>거래유형(카드/배달앱)별 요율 차등 <span class="bd conf">확정</span>:</b> 실계약에 차등이 존재한다 — 관계 1건은 <b>카드/배달앱 요율 세트 2개(탭)</b>를 갖는다. 값은 전부 예시(충돌 C1).<span class="src">[출처: 콘솔 제출 답변 2026-08-19 Q1 — §10]</span></div>
+  <div class="call gray"><b>거래유형(카드/배달)별 요율 차등 <span class="bd open">미결</span>:</b> 카드/배달 요율이 다르게 계약된 실계약 존재 여부 확인 후, 관계 요율을 <b>단일 세트 vs 유형별 2세트</b>로 택일한다(§10 #1). 그 전까지 해당 화면에는 "확인 필요" 배지를 유지한다.</div>
 </section>
 
 <section id="register" class="card">
@@ -253,15 +251,14 @@ ul,ol{margin:8px 0 8px 20px;padding:0}li{margin:6px 0}
   <div class="tblwrap"><table>
     <thead><tr><th>항목</th><th>생성 규칙</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td><b>아이디</b></td><td>기업 코드 4자 + 순번 (예: creb1 — 예시)</td><td>자동 삽입 · 수정 가능</td></tr>
-      <tr><td><b>비밀번호 초기값</b></td><td>기업 코드 4자 + 휴대폰 뒷자리 — R5 개정 규칙이 '휴대폰 뒤 4자리 단독' 규칙을 대체한다</td><td>최초 로그인 시 변경</td></tr>
-      <tr><td><b>추천코드 · 가입 링크</b></td><td>난수</td><td>자동 생성 · 수정 가능 — 회원 생성 시 자동 구조 생성</td></tr>
+      <tr><td><b>아이디</b></td><td>기업 코드 4자 + 순번</td><td>자동 삽입 · 수정 가능</td></tr>
+      <tr><td><b>비밀번호 초기값</b></td><td>휴대폰 뒤 4자리</td><td>최초 로그인 시 변경</td></tr>
+      <tr><td><b>추천코드</b></td><td>난수</td><td>자동 생성 · 수정 가능</td></tr>
     </tbody>
   </table></div>
-  <p class="src">[출처: 사용자 답변 2026-08-19 — 결정 #10b + 콘솔 종합 의견 R5(개정 규칙)]</p>
+  <p class="src">[출처: 사용자 답변 2026-08-19 — 결정 #10b]</p>
   <div class="call"><b>추천코드 = 체인 시작점 <span class="bd conf">확정</span>:</b> 가입 URL의 추천코드는 <b>가입 가맹점의 계약 파트너 체인 시작점</b>을 정한다. 어떤 코드로 들어오느냐가 그 가맹점의 계약 체인 구성에 영향을 준다.<span class="src">[출처: 사용자 답변 2026-08-19 #10a + app/partners/page.tsx:694~695 주석]</span></div>
-  <div class="call"><b>최상위(상위파트너) 등록 <span class="bd conf">확정</span>:</b> 직속 상위를 "없음"으로 선택하면 계약 관계 입력이 잠기고 "최상위 회원으로 등록됩니다" 안내가 노출된다(§3). 이 화면에서 <b>페이허그와의 계약율을 입력받는다</b>(체인 표시 포함) — 값은 예시.<span class="src">[출처: 콘솔 제출 답변 2026-08-19 Q3 — §10]</span></div>
-  <div class="call gray"><b>가입 링크 발급 <span class="bd open">일부 대기</span>:</b> 가입 링크는 난수로 자동 발급되며, 구 3드롭다운 생성기는 폐기 대상이다(§10 A1). 발급 주체 정책("전 유형 자기 링크 자동 발급 — 체인은 관계에서 파생")은 판단 대기(07_OPEN_QUESTIONS 7-12)이고, 현행 코드도 파트너코드가 필수가 아니므로 "필수" 전제로 서술하지 않는다. 병행 기간 중 기배포 partnerCode/salesCode URL의 유효성(유지/차단)은 미결이다.</div>
+  <div class="call gray"><b>최상위(상위파트너) 등록 <span class="bd open">일부 미결</span>:</b> 직속 상위를 "없음"으로 선택하면 계약 관계 입력이 잠기고 "최상위 회원으로 등록됩니다" 안내가 노출된다(확정 — §3). 다만 이 화면에서 <b>페이허그와의 계약율을 입력받을지(권장안) vs 전역 설정으로 둘지</b>는 미결이다(§10 #3).</div>
 </section>
 
 <section id="chainview" class="card">
@@ -280,7 +277,6 @@ ul,ol{margin:8px 0 8px 20px;padding:0}li{margin:6px 0}
     </tbody>
   </table></div>
   <p class="src">[근거: states_catalog.md Flow G — "노출 위치 비교, 채택 결정 대기" · 프로토타입 ?state=G1~G6 실동작]</p>
-  <div class="call"><b>행 확장 실동작 · 총판 노출 한정:</b> 회원 행 클릭 시 <b>한 줄 체인 + 관계 수수료율 + 가입 링크(난수) 확인·복사</b>는 콘솔 종합 의견 R4의 확정 요구이며, 프로토타입 상태 I5가 실동작으로 보여준다. 참여자(총판) 시점에서는 가입 링크·관계 요율을 <b>자기+하위 체인 한정</b>으로 노출한다.<span class="src">[출처: 콘솔 종합 의견 R4 + 8/20 슬랙 이슈 B1(자기+하위 체인 한정 명문화) — §10]</span></div>
   <h4>관계 테이블 — 전체 컬럼 (숫자는 전부 예시)</h4>
   <div class="tblwrap"><table>
     <thead><tr><th>상위 회원</th><th>하위 회원</th><th>관계</th><th>채권매입</th><th>시스템이용료</th><th>이체수수료</th><th>VAT</th><th>납부·수취</th><th>적용일</th></tr></thead>
@@ -298,16 +294,15 @@ ul,ol{margin:8px 0 8px 20px;padding:0}li{margin:6px 0}
   <div class="tblwrap"><table>
     <thead><tr><th>규칙</th><th>내용</th><th>상태</th></tr></thead>
     <tbody>
-      <tr><td><b>관계 변경 이력</b></td><td>상위·요율 변경 시 기존 관계를 <b>종료 처리하고 새 이력을 생성</b>한다 — 적용 시작·종료일(effective_from/to) 보존. 상위 변경은 <b>수정 경로</b>(기존 관계 종료일 기록 → 새 관계 생성)이며 탈퇴가 아니다</td><td><span class="bd conf">확정</span></td></tr>
+      <tr><td><b>관계 변경 이력</b></td><td>상위·요율 변경 시 기존 관계를 <b>종료 처리하고 새 이력을 생성</b>한다 — 적용 시작·종료일(effective_from/to)을 보존. 확정 답변 대기 중인 채택 방향</td><td><span class="bd lead">유력</span></td></tr>
       <tr><td><b>순환 연결</b></td><td>순환(A→B→A 등)은 <b>무조건 차단</b> — 등록·수정 시 에러와 경로를 표시</td><td><span class="bd conf">확정</span></td></tr>
-      <tr><td><b>skip-level</b></td><td>유형 단계를 건너뛴 상위 연결은 <b>허용 — 확인 다이얼로그 후 연결</b>. 최상위 총판 단독 체인 허용</td><td><span class="bd conf">확정</span></td></tr>
-      <tr><td><b>동일 유형 다단 적층</b></td><td>영업조직→영업조직→영업 같은 동일 유형 적층 — skip-level '생략' 결정과 별개 쟁점(실데이터 존재). 허용 시 난수 URL→체인 시작점 매핑에 <b>중간 조직 무유실(관계 재귀 파생)</b> 명기가 요건</td><td><span class="bd open">미결(7-14)</span></td></tr>
-      <tr><td><b>다중 상위</b></td><td>한 회원의 활성 상위 관계는 <b>1개 제한</b></td><td><span class="bd conf">확정</span></td></tr>
-      <tr><td><b>비활성 상위</b></td><td>신규 등록의 상위 후보에서 비활성 회원 제외는 현행 동작. 이미 연결된 하위는 <b>경고 배지 + 배분 동결</b> 병행 — 동결분 처리(보류/귀속/소급)는 원장·배분 구조 검토 후 개발 확인 대기</td><td><span class="bd conf">확정(방향)</span></td></tr>
-      <tr><td><b>정산 실행 게이트</b></td><td>가맹점 정산 실행 활성화 조건은 <b>"담당 체인 존재 + 관계 요율 유효"</b> — 조건 체크리스트·이동 링크·충족 알림 UX 설계가 후속 액션</td><td><span class="bd conf">확정</span></td></tr>
+      <tr><td><b>skip-level</b></td><td>유형 단계를 건너뛴 상위 연결 허용 여부 — 차단 vs 경고 후 허용 택일 대기</td><td><span class="bd open">미결</span></td></tr>
+      <tr><td><b>다중 상위</b></td><td>한 회원의 활성 상위 관계를 1개로 제한할지 — 택일 대기</td><td><span class="bd open">미결</span></td></tr>
+      <tr><td><b>비활성 상위</b></td><td>신규 등록의 상위 후보에서 비활성 회원 제외는 현행 동작. <b>이미 연결된 하위</b>의 관계·정산을 유지하고 경고만 표시할지는 채택 대기</td><td><span class="bd open">미결</span></td></tr>
+      <tr><td><b>정산 실행 게이트</b></td><td>가맹점 정산 실행 활성화 조건을 <b>"담당 체인 존재 + 요율 유효"</b>로 판정하는 대체안 — 채택 대기</td><td><span class="bd open">미결</span></td></tr>
     </tbody>
   </table></div>
-  <p class="src">[출처: 사용자 답변 2026-08-19 #8a + 콘솔 제출 답변 Q4·Q5·Q6·Q7·Q8 + 8/20 슬랙 이슈 B3 — 판정 원문은 §10]</p>
+  <p class="src">[출처: 사용자 답변 2026-08-19 #7·#8a·#8b·#9·#11 — 원문 질문은 §10]</p>
 </section>
 
 <section id="daou" class="card">
@@ -349,52 +344,31 @@ ul,ol{margin:8px 0 8px 20px;padding:0}li{margin:6px 0}
   - vat_type             <span class="o">// 별도/포함 — 계약 설정 나름</span>
   - payer / receiver     <span class="o">// 시스템료·이체료 각각</span>
 - effective_from / effective_to
-- status               <span class="o">// 활성/종료 — 이력 정책(§7 확정)과 짝</span>
+- status               <span class="o">// 활성/종료 — 이력 정책(§7 유력)과 짝</span>
 - created_at / updated_at</pre></div>
   </div>
   <div class="call"><b>조회 원리:</b> 체인 조회 = child에서 parent를 위로 재귀 조회 / 하위 조직 조회 = parent 기준 children을 아래로 조회. 회원 간 요율·기간·상태를 담는 기존 모델은 프론트에 없으므로 <b>관계 모델 신설이 전제</b>다(서버 유사 테이블 존재 여부는 서버 확인 필요).<span class="src">[근거: code_analysis.md §② — parentUserId 단일 스칼라가 전부]</span></div>
 </section>
 
 <section id="open" class="card">
-  <div class="title"><span class="n">10</span><h3>결정 현황 — 콘솔 결정 9문항 · 8/20 슬랙 이슈 12항목</h3><span class="bd conf">콘솔 확정 8</span> <span class="bd lead">유력 1</span> <span class="bd open">이슈 대기 4</span></div>
-  <p class="lead">결정 레지스터 §④의 9문항은 <a href="https://claude.ai/code/artifact/b7659402-1a27-4bc3-9f6e-fed4604d11a4">결정 콘솔</a> 제출 답변(2026-08-19 18:11 수신)으로 판정되어 있다 — <b>확정 8 · 유력 1</b>. 8/20 슬랙 이슈 12항목의 처리 현황은 두 번째 표다. 원문·근거는 결정 레지스터(<code>decisions_0819.md</code>)가 정본이다.</p>
-  <h4>콘솔 결정 9문항 — 판정</h4>
+  <div class="title"><span class="n">10</span><h3>미결 결정 9건 — 무엇이 걸려 있는가</h3><span class="bd open">미결 7</span> <span class="bd lead">유력 확정 대기 2</span></div>
+  <p class="lead">결정 레지스터 §④(사용자 재질문용 택일형 원문)와 동일한 목록이다. 답이 확정되면 이 문서와 결정 레지스터를 함께 갱신한다.</p>
+  <div class="call"><b>미결 수집 진행 중:</b> 아래 9문항(미결 7 + 유력 확정 대기 2)은 <a href="https://claude.ai/code/artifact/b7659402-1a27-4bc3-9f6e-fed4604d11a4">결정 콘솔</a>에서 수집 중이다. 콘솔은 <b>[제출] 버튼을 눌러야 저장</b>된다 — 입력만 하고 닫으면 반영되지 않는다.</div>
   <div class="tblwrap"><table>
-    <thead><tr><th style="width:40px">#</th><th>쟁점</th><th>결정</th><th>판정</th></tr></thead>
+    <thead><tr><th style="width:36px">#</th><th>쟁점</th><th>택일</th><th>걸려 있는 것 (1줄)</th><th>상태</th></tr></thead>
     <tbody>
-      <tr><td>Q1</td><td><b>거래유형(카드/배달앱)별 요율</b></td><td>차등 있음 — 관계 1건 = 카드/배달앱 요율 세트 2개(탭) (§4)</td><td><span class="bd conf">확정</span></td></tr>
-      <tr><td>Q2</td><td><b>관계 요율 정본 전환</b></td><td>ⓐ 전환 확정 · ⓑ 병행(신규 계약 = 관계, 기존 = 상품 — 정산상품관리 메뉴 당분간 유지) · ⓒ 과거 정산 이력은 상품 기준 유지가 기본(동결과 동치) — <b>재계산 실시 여부만 확인 필요</b></td><td><span class="bd conf">확정</span> <span class="bd open">ⓒ만 미결</span></td></tr>
-      <tr><td>Q3</td><td><b>최상위 등록 시 페이허그 계약율</b></td><td>등록 화면에서 입력 (§5)</td><td><span class="bd conf">확정</span></td></tr>
-      <tr><td>Q4</td><td><b>중간 단계 생략(skip-level)</b></td><td>허용 — 확인 다이얼로그 후 연결. 최상위 총판 단독 체인 허용 (§7)</td><td><span class="bd conf">확정</span></td></tr>
-      <tr><td>Q5</td><td><b>다중 상위</b></td><td>활성 상위 관계 1개 제한 — 상위 변경 = 수정 경로(기존 관계 종료일 기록 → 새 관계 생성), 탈퇴 아님 (§7)</td><td><span class="bd conf">확정</span></td></tr>
-      <tr><td>Q6</td><td><b>정산 실행 게이트</b></td><td>"담당 체인 존재 + 관계 요율 유효"로 판정 + 조건 체크리스트·이동 링크·충족 알림 UX 설계 (§7)</td><td><span class="bd conf">확정</span></td></tr>
-      <tr><td>Q7</td><td><b>비활성 상위</b></td><td>경고 배지 + 배분 동결 병행 — 동결분 처리(보류/귀속/소급)는 원장·배분 구조 검토 후 개발 확인 (§7)</td><td><span class="bd conf">확정(방향)</span></td></tr>
-      <tr><td>Q8</td><td><b>관계 변경 이력</b></td><td>종료 처리 + 새 이력 생성 — 적용 시작·종료일 보존 (§7·§9)</td><td><span class="bd conf">확정</span></td></tr>
-      <tr><td>Q9</td><td><b>선정산 응답 요율 필드(policyRate)</b></td><td>폐기 — 병행 기간 유지 가능, 제거 시점·외부 사용처는 개발 확인 후 확정</td><td><span class="bd lead">유력</span></td></tr>
+      <tr><td>1</td><td><b>P3 거래유형(카드/배달) 요율 차등</b></td><td>실계약 확인 → (가) 유형별 2세트 / (나) 단일 세트</td><td>관계 요율 세트의 차원 — 가맹점 수수료 화면·Flow C·G 배지</td><td><span class="bd open">미결</span></td></tr>
+      <tr><td>2</td><td><b>P6 요율 출처 전환 3방침</b></td><td>① 관계(체인)로 전환 확정? ② 일괄 vs 병행 ③ 기존 정산상품 데이터 동결 vs 이관</td><td>정산 계산의 rate source와 마이그레이션 전략 전체</td><td><span class="bd open">미결</span></td></tr>
+      <tr><td>3</td><td><b>페이허그 계약율 위치</b></td><td>(가) 최상위 등록 화면 입력 — 권장안 / (나) 전역 설정</td><td>최상위 등록 화면(§5)의 입력 항목 구성</td><td><span class="bd open">미결</span></td></tr>
+      <tr><td>4</td><td><b>skip-level</b></td><td>(가) 차단 / (나) 경고 후 허용</td><td>유형 단계를 건너뛴 상위 연결의 검증 규칙(§7)</td><td><span class="bd open">미결</span></td></tr>
+      <tr><td>5</td><td><b>다중 상위</b></td><td>(가) 활성 상위 1개 제한 / (나) 복수 허용</td><td>관계 모델의 제약 조건과 등록 예외 화면(§7)</td><td><span class="bd open">미결</span></td></tr>
+      <tr><td>6</td><td><b>정산 실행 게이트</b></td><td>(가) "담당 체인 존재 + 요율 유효"로 대체 동의 / (나) 다른 기준</td><td>가맹점 정산 실행 활성화의 전제 조건(§7)</td><td><span class="bd open">미결</span></td></tr>
+      <tr><td>7</td><td><b>비활성 상위의 기존 하위</b></td><td>(가) 관계·정산 유지 + 경고 / (나) 정산 중단</td><td>비활성화가 하위 체인 정산에 미치는 범위(§7)</td><td><span class="bd open">미결</span></td></tr>
+      <tr><td>8</td><td><b>이력 방식 — 유력안 확정</b></td><td>(가) 종료 처리 + 새 이력 생성 확정 / (나) 덮어쓰기 유지</td><td>관계 변경 이력 보존(§7)과 관계 모델의 effective_from/to·status(§9)</td><td><span class="bd lead">유력</span></td></tr>
+      <tr><td>9</td><td><b>선정산 응답 요율 필드 폐기 — 유력안 확정</b></td><td>(가) 폐기 — 표시 소비처 없음 / (나) 유지(사유 회신)</td><td>선정산 응답 계약의 정리 — 화면 영향 없음</td><td><span class="bd lead">유력</span></td></tr>
     </tbody>
   </table></div>
-  <p>콘솔 종합 의견의 신규 요구 R1~R6 중 <b>R4</b>(행 확장 한 줄 체인·가입 링크 복사 — §6)와 <b>R5</b>(계정 자동 생성 개정 — §5)는 프로토타입 실동작에 반영되어 있고, <b>R1</b>(원장 반올림 정책 — "최대 오차 1원" 검산 필요) · <b>R2</b>(원장 일/주/월 뷰·필터) · <b>R3</b>(가맹점 파트너·담당자 자동 설정 로직 확인) · <b>R6</b>(관계 요율 전환의 정산 현황·원장 연결점)은 검토 대기다.</p>
-  <h4>8/20 슬랙 이슈 12항목 — 처리 현황</h4>
-  <div class="call"><b>요약:</b> 반영 8(A2·B1·B5·C1·L1~L4) · 판단 대기 4 — <b>B2 → 07_OPEN_QUESTIONS 7-12</b>(가입 링크 발급 주체) · <b>B4 → 7-13</b>(유형×유형 생성 권한) · <b>B3 → 7-14</b>(동일 유형 다단 적층) · <b>구 가입링크 URL 유효성</b>(A1 잔여) 미결. 이 표의 id(A1~L4)는 슬랙 대조 리포트 고유 id로, 프로토타입 상태 id(Flow A~I)·충돌 레지스터 C1~C6과 무관하다.</div>
-  <div class="tblwrap"><table>
-    <thead><tr><th style="width:76px">id</th><th>내용</th><th>처리 상태</th></tr></thead>
-    <tbody>
-      <tr><td>A1</td><td>구 가입링크 생성기(3드롭다운) 폐기 — 난수 링크 자동 발급(R4·R5)으로 대체</td><td><span class="bd open">대기</span> 생성기 폐기의 문서 정정은 완료 — 병행 기간 중 기배포 partnerCode/salesCode URL 유효성(유지/차단)은 <b>미결</b>(§5)</td></tr>
-      <tr><td>A2</td><td>Q4 확정(skip-level 허용 — 확인 후 연결)의 화면 정의 반영</td><td><span class="bd conf">반영</span> 상태 카탈로그 갱신 · 매트릭스 D6·D7 = 확정 반영본(§11)</td></tr>
-      <tr><td>B1</td><td>참여자(총판) 시점 노출 범위 — 행 확장의 가입 링크·관계 요율</td><td><span class="bd conf">반영</span> 자기+하위 체인 한정 명문화(§6) — 화면설계 시트 반영 대기</td></tr>
-      <tr><td>B2</td><td>가입 링크 발급 주체 — "전 유형 자기 링크 자동 발급(체인은 관계에서 파생)" 채택 여부. 현행 코드도 파트너코드 필수 아님 — "필수" 전제 서술 금지</td><td><span class="bd open">판단 대기</span> 07_OPEN_QUESTIONS <b>7-12</b> 등재</td></tr>
-      <tr><td>B3</td><td>동일 유형 다단 적층(영업조직→영업조직→영업) — Q4 '생략' 결정과 별개 쟁점, 실데이터 존재(§7)</td><td><span class="bd open">판단 대기</span> 07_OPEN_QUESTIONS <b>7-14</b> 등재(다단 적층·용어 충돌)</td></tr>
-      <tr><td>B4</td><td>유형×유형 생성 권한 — 프론트 하드코딩 0건 · 규칙 전부 서버 위임(creatable-types). 권한표는 전 셀 확인 필요</td><td><span class="bd open">판단 대기</span> 07_OPEN_QUESTIONS <b>7-13</b> 등재(선행 조건: 7-10 체인 구조 개발 파악)</td></tr>
-      <tr><td>B5</td><td>병행 기간 정산상품 배정 정보의 참여자(총판) 비노출(PAYHUG-202/204) 승계</td><td><span class="bd conf">반영</span> 등재 완료 · 프로토타입 병행 배지에 병기(§11)</td></tr>
-      <tr><td>C1(슬랙)</td><td>회원 유형 변경(정정) 플로우 — 새 유형 기준 상위 규칙 재적용 · 기존 관계 종료 + 새 관계 생성(Q8 준용) · 하위 체인 영향 안내. 실사례: SALES 오등록 정정 VOC</td><td><span class="bd conf">반영</span> Flow E 신규 상태 <b>E5</b> 등재 · 프로토타입 실동작(§11)</td></tr>
-      <tr><td>L1</td><td>현행 '영업' 드롭다운이 SALES+SALES_ORG 혼합 — 병행 기간 존속 여부</td><td><span class="bd conf">반영(기록)</span> 확인 필요 유지</td></tr>
-      <tr><td>L2</td><td>현행 유형 탭이 계층 역순</td><td><span class="bd conf">반영</span> 개편 목록은 계층순 채택 — 프로토타입 유형 탭 계층순(§11)</td></tr>
-      <tr><td>L3</td><td>담당자 변경 모달에 raw enum "(SALES_ORG)" 노출</td><td><span class="bd conf">반영(기록)</span></td></tr>
-      <tr><td>L4</td><td>정산 role 코드 SALES가 '영업조직' 몫 — role 명명은 서버 협의 필요</td><td><span class="bd conf">반영(기록)</span> 용어 대조는 02_TERMS_AND_STATUS §6 참조</td></tr>
-    </tbody>
-  </table></div>
-  <div class="call gray"><b>미결 잔여:</b> Q2ⓒ 과거 정산 이력 재계산 여부 · 가입 링크 발급 주체(7-12) · 유형×유형 생성 권한(7-13) · 동일 유형 다단 적층(7-14) · 구 가입링크 URL 유효성 · 체인·요율 노출 위치 채택(§6 Flow G) · Q9 policyRate 폐기 확정(유력). 답이 확정되면 이 문서와 결정 레지스터, 07_OPEN_QUESTIONS를 함께 갱신한다.</div>
-  <p class="src">[출처: decisions_0819.md — 콘솔 제출 답변(2026-08-19 18:11) · 종합 의견 R1~R6 · "8/20 슬랙 이슈 반영사항"(슬랙 대조 리포트 A1~L4)]</p>
+  <p class="src">[출처: decisions_0819.md §④ — 07_OPEN_QUESTIONS 신규 등재 후보 9건]</p>
 </section>
 
 <section id="outputs" class="card">
@@ -403,15 +377,14 @@ ul,ol{margin:8px 0 8px 20px;padding:0}li{margin:6px 0}
     <thead><tr><th>산출물</th><th>위치</th><th>내용</th></tr></thead>
     <tbody>
       <tr><td><b>인터랙티브 프로토타입 v1</b></td><td><code>payhug-member-redesign/index.html</code></td><td>계약 위치 라디오판 — <b>비교용 보존</b>. 목록·등록·수정·프로필·계약 구조·검증이 실동작하는 단일 HTML. 상태 하네스 <code>?state=</code> 46상태(Flow A~G) · 개발 검수 <code>?selftest=1</code></td></tr>
-      <tr><td><b>인터랙티브 프로토타입 v2</b></td><td><code>payhug-member-redesign/v2.html</code></td><td>정책 반영판 — <b>기준판</b>. 파트너 상·하위 자동 판별 · 계정 자동 생성(R5 개정) · 이체수수료 300원 고정 · 다우 직계약 · 투자자 병렬 + 콘솔 결정 반영(카드/배달앱 요율 2세트 탭 · 최상위 페이허그 계약율 입력 · 정산 실행 게이트 데모 · 비활성 상위 경고+배분 동결 · 행 확장 가입 링크 복사) + 8/20 반영분(회원 유형 변경 정정 <b>E5</b> · skip-level 확정 표기 — 동일 유형 적층만 정책 대기 배지 · 유형 탭 계층순 · 병행 배지에 참여자(총판) 비노출 병기 · 총판 시점 자기+하위 체인 한정). 상태 하네스 <code>?state=</code> <b>58상태</b>(Flow A~I) · 셀프테스트 <code>?selftest=1</code> <b>41종</b></td></tr>
+      <tr><td><b>인터랙티브 프로토타입 v2</b></td><td><code>payhug-member-redesign/v2.html</code></td><td>정책 반영판 — <b>기준판</b>. 파트너 상·하위 자동 판별 · 계정 자동 생성 · 이체수수료 300원 고정 · 다우 직계약 · 투자자 병렬 가지. 상태 하네스 <code>?state=</code> 51상태(Flow A~H)</td></tr>
       <tr><td><b>정적 목업 9종</b></td><td><code>payhug-member-redesign/mockups.html</code> + m1~m9</td><td>화면설계 시트 9장과 1:1 대응하는 자체완결 HTML(폭 1920)</td></tr>
-      <tr><td><b>Figma 화면설계</b></td><td>서준 파일 <code>Tcf69tIciGxmlqCIuRb0iI</code> 페이지 <code>2807:2212</code></td><td>화면설계 시트 9장(y=0~3335) + 상태 매트릭스 61장(y=4200~45300) — 아래 매트릭스 배치</td></tr>
-      <tr><td><b>기획 레포 (결정·명세·분석)</b></td><td><code>payhug-spec/_pipeline/member_redesign/</code></td><td><code>decisions_0819.md</code>(결정 정본) · <code>spec.md</code>(작업 명세 SSOT) · <code>states_catalog.md</code>(상태 카탈로그) · <code>code_analysis.md</code>(정산상품 참조 인벤토리·재사용) · <code>assembly_v3_result.md</code>(매트릭스 조립 좌표·검증) · manuscripts/ · mockups/</td></tr>
+      <tr><td><b>Figma 화면설계</b></td><td>서준 파일 <code>Tcf69tIciGxmlqCIuRb0iI</code> 페이지 <code>2807:2212</code></td><td>화면설계 시트 9장(y=0~3335) + 상태 매트릭스 54장(y=4200~40596) — 아래 매트릭스 배치</td></tr>
+      <tr><td><b>기획 레포 (결정·명세·분석)</b></td><td><code>payhug-spec/_pipeline/member_redesign/</code></td><td><code>decisions_0819.md</code>(결정 정본) · <code>spec.md</code>(작업 명세 SSOT) · <code>states_catalog.md</code>(상태 카탈로그) · <code>code_analysis.md</code>(정산상품 참조 인벤토리·재사용) · <code>assembly_v2_result.md</code>(매트릭스 조립 좌표·검증) · manuscripts/ · mockups/</td></tr>
       <tr><td><b>이 구조서</b></td><td><code>payhug-member-redesign/회원관리_계약체인_구조서.html</code></td><td>현재 상태 기준 정본 — 스냅샷은 <code>구조서_버전/</code></td></tr>
-      <tr><td><b>공개 공유 허브</b></td><td><a href="https://joo2n.github.io/payhug-member-hub/">https://joo2n.github.io/payhug-member-hub/</a></td><td>프로토타입 v2·v1 · 구조서 · 목업 · 리포트의 공개 미러 진입점 — <code>deploy_hub.sh</code>가 동기화한다</td></tr>
     </tbody>
   </table></div>
-  <div class="call"><b>두 프로토타입의 관계:</b> <code>v2.html</code>이 확정 결정(파트너 자동 판별 · 계정 자동 생성 · 이체수수료 300원 고정 · 다우 직계약 · 투자자 병렬)을 반영한 <b>기준판</b>이고, <code>index.html</code>은 계약 위치 라디오 방식(§3의 대안)을 실동작으로 보존하는 <b>비교판</b>이다. 두 파일은 상단에서 상호 링크된다. 매트릭스의 본편 58장(Flow A~H 51 + FLOW I 7)은 v2, 비교안 밴드 3장은 index(v1 라디오판) 기준이다.</div>
+  <div class="call"><b>두 프로토타입의 관계:</b> <code>v2.html</code>이 확정 결정(파트너 자동 판별 · 계정 자동 생성 · 이체수수료 300원 고정 · 다우 직계약 · 투자자 병렬)을 반영한 <b>기준판</b>이고, <code>index.html</code>은 계약 위치 라디오 방식(§3의 대안)을 실동작으로 보존하는 <b>비교판</b>이다. 두 파일은 상단에서 상호 링크된다. 매트릭스의 본편 51장은 v2, 비교안 밴드 3장은 index(v1 라디오판) 기준이다.</div>
   <h4>화면설계 시트 9장 (y=0 부근 · 좌표 무변동)</h4>
   <div class="tblwrap"><table>
     <thead><tr><th>시트</th><th>노드</th><th>내용</th></tr></thead>
@@ -427,8 +400,8 @@ ul,ol{margin:8px 0 8px 20px;padding:0}li{margin:6px 0}
       <tr><td>AD_MERCHANT_FEE2</td><td><code>2875:2</code></td><td>가맹점 상세 — 적용 계약 체인 카드 (거래유형 차등 = 확인 필요 배지)</td></tr>
     </tbody>
   </table></div>
-  <h4>상태 매트릭스 61장 — 배치 (y=4200~45300 · x=0~8222)</h4>
-  <p>본편 v2 <b>58장</b> = Flow A~H <b>51장</b>(A 7 · B 10 · C 6 · D 7 · E 4 · F 6 · G 6 · H 5) + FLOW I "콘솔·8/20 반영" <b>7장</b>(E5·I1~I6 — E5는 Flow E 소속). 여기에 Flow B 뒤 <b>"비교안 — 계약 위치 라디오" 밴드</b>의 v1 라디오판 <b>3장</b>(B6·B7·B8)을 더해 총 <b>61장</b>. 플로우마다 다크 섹션 헤더 밴드가 있고, 각 프레임 위에 라벨판이 붙는다(FLOW I는 <code>[id] 제목</code> 한 줄 — 요율 실값 미기재 원칙). <b>D6·D7은 Q4 확정(허용 — 확인 후 연결)을 반영한 판</b>이다. 요율 숫자는 전부 예시.</p>
+  <h4>상태 매트릭스 54장 — 배치 (y=4200~40596 · x=0~8222)</h4>
+  <p>본편 v2 <b>51장</b>(Flow A~H) + Flow B 뒤 <b>"비교안 — 계약 위치 라디오" 밴드</b>의 v1 라디오판 <b>3장</b>(B6·B7·B8) = 총 <b>54장</b>. 플로우마다 다크 섹션 헤더 밴드가 있고, 각 프레임 위에 라벨판(<code>[id] 제목</code> + 조건 1줄)이 붙는다. 요율 숫자는 전부 예시.</p>
   <div class="tblwrap"><table>
     <thead><tr><th>섹션</th><th>주제</th><th>장수</th><th>헤더 y</th><th>콘텐츠 y 범위</th></tr></thead>
     <tbody>
@@ -436,24 +409,22 @@ ul,ol{margin:8px 0 8px 20px;padding:0}li{margin:6px 0}
       <tr><td><b>FLOW B</b></td><td>회원 등록 · 유형 분기 — 파트너 상·하위 자동 판별 반영</td><td>10</td><td>8386</td><td>8666~14133</td></tr>
       <tr><td><b>비교안 밴드</b></td><td>비교안 — 계약 위치 라디오 (v1 B6·B7·B8)</td><td>3</td><td>14373</td><td>14633~16266</td></tr>
       <tr><td><b>FLOW C</b></td><td>등록 · 요율 세트·미리보기 — 이체수수료 300원 고정 표시</td><td>6</td><td>16666</td><td>16946~20526</td></tr>
-      <tr><td><b>FLOW D</b></td><td>등록 · 검증·예외 — 순환 차단 / D6·D7 = skip-level Q4 확정 반영본 / 다중 상위 활성 1개 제한</td><td>7</td><td>20926</td><td>21206~25054</td></tr>
-      <tr><td><b>FLOW E</b></td><td>회원 수정 — 이력 확정(종료+새 이력) · E5(유형 변경 정정)는 FLOW I 밴드에 배치</td><td>4</td><td>25442</td><td>25722~27527</td></tr>
+      <tr><td><b>FLOW D</b></td><td>등록 · 검증·예외 — 순환 차단 확정 / skip-level·다중 상위 미결</td><td>7</td><td>20926</td><td>21206~25042</td></tr>
+      <tr><td><b>FLOW E</b></td><td>회원 수정 — 이력 안내(유력)</td><td>4</td><td>25442</td><td>25722~27527</td></tr>
       <tr><td><b>FLOW F</b></td><td>프로필 · 계약 구조 조회</td><td>6</td><td>27927</td><td>28207~31713</td></tr>
       <tr><td><b>FLOW G</b></td><td>체인·요율 노출 위치 비교 — 채택 결정 대기</td><td>6</td><td>32113</td><td>32393~36388</td></tr>
       <tr><td><b>FLOW H</b></td><td>병렬 배분 · 계정 자동 생성</td><td>5</td><td>36788</td><td>37068~40596</td></tr>
-      <tr><td><b>FLOW I</b></td><td>콘솔·8/20 반영 — E5는 Flow E 소속(회원 유형 변경 정정)</td><td>7</td><td>40996</td><td>41276~45300</td></tr>
     </tbody>
   </table></div>
   <ul>
     <li><b>Flow G (6) <span class="bd open">채택 결정 대기</span></b> — 체인·요율 노출 위치 비교안 6종: 조회 모달(G1) / 목록 hover 팝오버(G2) / 목록 행 인라인 확장(G3) / 프로필 통합(G4) / 등록 미리보기(G5·참고) / 관계 요율 풀컬럼 표(G6). 케이스별 동작은 §6.</li>
     <li><b>Flow H (5)</b> — 병렬 배분·계정 자동 생성: 투자자 연결(H1) / 체인 조회 투자자 병렬(H2) / 제휴사(다우) 등록(H3) / 체인 조회 다우 직계약(H4) / 계정 자동 생성 상세(H5).</li>
-    <li><b>FLOW I (7)</b> — 콘솔·8/20 반영: 회원 유형 변경(정정)(E5 — Flow E 소속) / 요율 세트 카드·배달앱 탭(I1) / 최상위 — 페이허그 계약율 입력(I2) / 정산 실행 게이트 체크리스트(I3) / 비활성 상위 — 경고+배분 동결(I4) / 행 확장 — 한 줄 체인+가입 링크(I5) / 자동 생성 개정(I6). 섹션 y=40996~45300.</li>
   </ul>
-  <p class="src">[근거: assembly_v3_result.md — 배치 61장(기존 52 유지 + D6·D7 교체 2 + FLOW I 신규 7) · 밴드 10개 · 라벨판 115개 · 겹침 0건 · 기존 시트 9장 좌표 무변동 검증 · states_catalog.md Flow A~I]</p>
+  <p class="src">[근거: assembly_v2_result.md — 배치 54장 · 밴드 9개(섹션 헤더 8 + 비교안 소제목 1) · 라벨판 108개 · 겹침 0건 · 기존 시트 9장 좌표 무변동 검증 · states_catalog.md Flow A~H]</p>
 </section>
 
 <div class="footer">
-  회원관리 계약 체인 구조서 · v4 · 2026-08-20 — 정산상품 없이 관계(Edge)가 요율 세트를 갖는 구조 · 콘솔 결정 9문항(확정 8 · 유력 1) · 8/20 이슈 12항목(반영 8 · 대기 4)<br/>
+  회원관리 계약 체인 구조서 · v3 · 2026-08-19 — 정산상품 없이 관계(Edge)가 요율 세트를 갖는 구조 · 확정 15 / 유력 2 / 미결 7<br/>
   이 문서는 작업 진행에 따라 계속 갱신됩니다 — 이전 버전은 <b>구조서_버전/</b> 폴더에서 볼 수 있습니다.
 </div>
 </main></div></body></html>
