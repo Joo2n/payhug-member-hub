@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>회원 관리 — 인터랙티브 프로토타입 v2 (2026-08-19 정책 반영)</title>
+<title>회원 관리 — 인터랙티브 프로토타입 v2 (2026-08-20 정책 반영)</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{width:1920px;font-family:"Apple SD Gothic Neo","Noto Sans KR",sans-serif;color:#111827;background:#f9fafb}
@@ -360,7 +360,7 @@ select.f-input{appearance:auto}
         <div class="sb-items">
           <a class="sb-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg><span>정산 현황</span></a>
           <a class="sb-item"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm3.75-6.75A2.25 2.25 0 0119.5 4.5h-15A2.25 2.25 0 002.25 6.75v10.5A2.25 2.25 0 004.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75z"/></svg><span>정산 시뮬레이션</span></a>
-          <a class="sb-item" style="flex-wrap:wrap" id="sbProduct"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg><span>정산 상품관리</span><span class="sb-par">병행 운영</span><span class="sb-par-sub">신규 계약은 관계 요율</span></a>
+          <a class="sb-item" style="flex-wrap:wrap" id="sbProduct"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg><span>정산 상품관리</span><span class="sb-par">병행 운영</span><span class="sb-par-sub">신규 계약은 관계 요율</span><span class="sb-par-sub">배정 정보는 참여자(총판) 비노출 승계</span></a>
         </div>
       </div>
       <div class="sb-group">
@@ -384,13 +384,13 @@ select.f-input{appearance:auto}
   <main class="main">
     <div class="proto-bar">
       <span class="proto-badge">프로토타입 v2</span>
-      <span class="proto-badge" style="background:#7c3aed">2026-08-19 정책·콘솔 결정 반영</span>
+      <span class="proto-badge" style="background:#7c3aed">2026-08-20 정책·이슈 반영</span>
       <span>목데이터·요율은 전부 예시 — 새로고침 시 초기화 (백엔드 없음)</span>
       <a class="proto-link" href="v1.html">이전판(계약 위치 라디오) 보기 →</a>
       <a class="proto-link" href="mockups.html">화면설계 목업 보기 ›</a>
       <a class="proto-link" style="cursor:pointer" onclick="openGateDemo('unmet')">정산 실행 게이트 데모 ›</a>
       <span class="proto-spacer"></span>
-      <span class="devtg" onclick="toggleSkip()"><span class="tg" id="skipTg"><span class="knob"></span></span>skip-level 허용 <span class="badge b-tbd">확인 필요</span><span style="font-weight:400;color:#b45309">— 개발자용</span></span>
+      <span class="devtg" onclick="toggleSkip()"><span class="tg" id="skipTg"><span class="knob"></span></span>skip-level 허용<span style="font-weight:400;color:#b45309">— 확정: 확인 다이얼로그 후 연결 · 동일 유형 다단 적층만 정책 확인 필요 · 개발자용</span></span>
     </div>
 
     <div class="page-head">
@@ -526,6 +526,13 @@ function ancestorChain(id){ /* [자기 제외 부모, 조부모, ...] */
   while(g++<50){var r=activeRel(cur);if(!r)break;cur=r.parentId;var m=memberById(cur);if(!m)break;out.push(m)}
   return out;
 }
+function descendantsCount(id){ /* C1 — 활성 관계 기준 하위 전체 인원(체인 표기 영향 범위) */
+  var n=0,queue=[id],g=0;
+  while(queue.length&&g++<200){
+    childRels(queue.shift()).forEach(function(r){n++;queue.push(r.childId)});
+  }
+  return n;
+}
 
 /* ═════════════════ 토스트 · 확인 다이얼로그 ═════════════════ */
 function toast(html){
@@ -551,7 +558,8 @@ function closeConfirm(ok){$('#confirmLayer').classList.remove('open');var cb=con
 
 /* ═════════════════ 목록 ═════════════════ */
 var filterType='ALL',searchQ='',devSkip=false,expandedId=null;
-var TABS=[['ALL','전체'],['INVESTOR','투자자'],['PAYHUG','페이허그'],['PARTNER','파트너'],['AFFILIATE','제휴사'],['SALES','영업'],['SALES_ORG','영업조직'],['ADMIN','관리자']];
+/* L2 — 유형 탭은 계층순: 체인 상단부터(페이허그→파트너→영업조직→영업), 병렬 유형(제휴사·투자자)·관리자는 후순위 */
+var TABS=[['ALL','전체'],['PAYHUG','페이허그'],['PARTNER','파트너'],['SALES_ORG','영업조직'],['SALES','영업'],['AFFILIATE','제휴사'],['INVESTOR','투자자'],['ADMIN','관리자']];
 function renderTabs(){
   $('#tabs').innerHTML=TABS.map(function(t){
     var n=t[0]==='ALL'?members.length:members.filter(function(m){return m.type===t[0]}).length;
@@ -607,7 +615,7 @@ function reactivate(id){var m=memberById(id);m.status='ACTIVE';renderAll();toast
 function toggleSkip(){
   devSkip=!devSkip;
   $('#skipTg').classList.toggle('on',devSkip);
-  toast(devSkip?'<b>skip-level 허용 ON</b> — 상위 검색에 전체 유형이 표시됩니다. 정책 확인 필요 항목입니다.':'skip-level 허용 OFF');
+  toast(devSkip?'<b>skip-level 허용 ON</b> — 상위 검색에 전체 유형이 표시됩니다. 중간 단계 생략 연결은 확인 다이얼로그 후 허용(확정)됩니다. 동일 유형 다단 적층은 정책 확인 필요(다단 적층).':'skip-level 허용 OFF');
 }
 
 /* ═════════════════ 모달 인프라 ═════════════════ */
@@ -637,7 +645,7 @@ function matchPtype(m,ptype){
 }
 function newForm(mode){
   var e=defRateExtras();
-  return {mode:mode,memberId:null,name:'',phone:'',loginId:'',password:'',type:'SALES',position:null,status:'ACTIVE',origParentId:null,corporate:false,business:false,referralCode:'',
+  return {mode:mode,memberId:null,name:'',phone:'',loginId:'',password:'',type:'SALES',origType:null,typeMismatch:null,position:null,status:'ACTIVE',origParentId:null,corporate:false,business:false,referralCode:'',
     parentId:null,parentQuery:'',ddOpen:false,cycleErr:null,auto:{loginId:'',pw:'',ref:'',link:''},
     rateTab:'CARD',rates:{margin:'',systemFee:'',transferFeeWon:'300'},ratesDly:{margin:'',systemFee:'',transferFeeWon:'300'},
     phRate:{card:'',dly:''},vat:e.vat,payer:e.payer,receiver:e.receiver};
@@ -694,7 +702,7 @@ function openAddModal(){
 function openEditModal(id){
   var m=memberById(id);if(!m)return;
   F=newForm('edit');
-  F.memberId=id;F.name=m.name;F.phone=m.phone||'';F.loginId=m.loginId;F.type=m.type;F.position=m.position;F.status=m.status;
+  F.memberId=id;F.name=m.name;F.phone=m.phone||'';F.loginId=m.loginId;F.type=m.type;F.origType=m.type;F.position=m.position;F.status=m.status;
   F.corporate=m.corporate;F.business=m.business;F.referralCode=m.referralCode;
   var rel=activeRel(id);
   if(m.type==='PARTNER')F.position=rel?'LOWER':'UPPER'; /* v2: 관계 기준 자동 판별 */
@@ -714,13 +722,16 @@ function openEditModal(id){
 }
 function formShell(title,submitLabel){
   var isEdit=F.mode==='edit';
+  var typeOptions=[['SALES','영업'],['SALES_ORG','영업조직'],['PARTNER','파트너'],['INVESTOR','투자자'],['AFFILIATE','제휴사'],['ADMIN','관리자']].map(function(o){
+      return '<option value="'+o[0]+'"'+(F.type===o[0]?' selected':'')+'>'+o[1]+'</option>';
+    }).join('');
+  /* C1 — 수정 모달에서도 회원 유형 변경(정정) 가능: 새 유형 기준 상위 규칙 재검증 + 관계 이력(종료→신규) 처리 */
   var typeField=isEdit
-    ? '<div><label class="f-label">유형</label><div class="parent-type">'+typeBadge(memberById(F.memberId)||{type:F.type,position:F.position})+'<span class="note">유형 변경 — 확인 필요</span></div></div>'
+    ? '<div><label class="f-label">회원 유형</label>'+
+      '<select class="f-input" id="typeSel" onchange="onTypeChange(this.value)">'+typeOptions+'</select>'+
+      '<p class="f-help">유형 정정 — 변경하면 새 유형 기준으로 상위 유형 규칙을 재검증하며, 저장 시 기존 상위 관계는 종료일이 기록된 뒤 새 관계가 생성됩니다.</p></div>'
     : '<div><label class="f-label">유형 <span class="req">*</span></label>'+
-      '<select class="f-input" id="typeSel" onchange="onTypeChange(this.value)">'+
-      [['SALES','영업'],['SALES_ORG','영업조직'],['PARTNER','파트너'],['INVESTOR','투자자'],['AFFILIATE','제휴사'],['ADMIN','관리자']].map(function(o){
-        return '<option value="'+o[0]+'"'+(F.type===o[0]?' selected':'')+'>'+o[1]+'</option>';
-      }).join('')+'</select></div>';
+      '<select class="f-input" id="typeSel" onchange="onTypeChange(this.value)">'+typeOptions+'</select></div>';
   var statusField=isEdit
     ? '<div><label class="f-label">상태</label><select class="f-input" id="statusSel" onchange="F.status=this.value">'+
       [['ACTIVE','활성'],['INACTIVE','비활성']].map(function(o){
@@ -755,7 +766,7 @@ function formShell(title,submitLabel){
         '<p class="f-help">가맹점 가입 URL에 사용되는 고유 코드'+(isEdit?'':' — 난수 6자 자동 생성, 수정 가능')+'</p></div>'+
       (isEdit?'':'<div><label class="f-label">가입 링크 (자동 발급)</label>'+
         '<div class="pr-fixed mono" id="joinPreview">'+esc(F.auto.link||'이름 입력 시 난수 URL 자동 발급')+'</div>'+
-        '<p class="f-help">난수 URL 자동 발급 (예시) — 가맹점 가입 경로(계약 파트너 체인 시작점)로 사용됩니다.</p></div>')+
+        '<p class="f-help">난수 URL 자동 발급 (예시) — 가맹점 가입 경로(계약 파트너 체인 시작점)로 사용됩니다. 발급 주체 정책 — <span class="badge b-tbd">확인 필요</span></p></div>')+
     '</div>'+
     '<div id="contractWrap"></div>'+
     '<div id="formBanner"></div>'+
@@ -767,6 +778,16 @@ function onTypeChange(v){
   F.type=v;
   F.position=v==='PARTNER'?F.position:null; /* 파트너 계약 위치는 기본 미선택 */
   F.parentId=null;F.parentQuery='';F.cycleErr=null;F.ddOpen=false;
+  /* C1 — 유형 정정(수정 모달): 새 유형 기준 상위 규칙 재검증 — 현 상위가 적합하면 유지, 부적합하면 비우고 재선택 유도 */
+  if(F.mode==='edit'){
+    F.typeMismatch=null;
+    var rule=parentRule(v,F.position);
+    if(rule.kind==='search'&&F.origParentId!=null){
+      var op=memberById(F.origParentId);
+      if(op&&matchPtype(op,rule.ptype)){F.parentId=op.id;F.parentQuery=op.name}
+      else if(op)F.typeMismatch={parentName:op.name,parentRole:roleLabel(op),needLabel:rule.typeLabel};
+    }
+  }
   renderContract();
 }
 function onPartnerParent(v){ /* v2: 파트너 직속 상위 select — "없음(최상위)"=상위파트너, 상위파트너 선택=하위파트너 자동 판별 */
@@ -784,6 +805,13 @@ function renderContract(){
   var w=$('#contractWrap');if(!w)return;
   var rule=parentRule(F.type,F.position);
   var html='<div class="sec"><div class="sec-h"><span class="sec-bar amber"></span>계약 관계</div>';
+  /* C1 — 유형 정정 배너: 재검증 안내 → 현 상위 부적합 경고 → 하위 체인 표기 영향 */
+  if(F.mode==='edit'&&F.origType&&F.type!==F.origType){
+    var dN=descendantsCount(F.memberId);
+    html+='<div class="banner bn-amber">'+warnSvg+'<span><b>유형 정정 — '+esc(TYPES[F.origType].label)+' → '+esc(TYPES[F.type].label)+'.</b> 새 유형 기준으로 상위 유형 규칙을 다시 적용합니다. 저장 시 기존 상위 관계는 종료일이 기록되고 새 관계가 생성됩니다.</span></div>';
+    if(F.typeMismatch)html+='<div class="banner bn-red">'+warnSvg+'<span><b>현 직속 상위 부적합</b> — '+esc(F.typeMismatch.parentName)+'('+esc(F.typeMismatch.parentRole)+')은(는) '+esc(TYPES[F.type].label)+'의 상위 규칙('+esc(F.typeMismatch.needLabel)+')에 맞지 않습니다. 직속 상위를 다시 선택하세요.</span></div>';
+    if(dN>0)html+='<div class="banner bn-gray">'+warnSvg+'<span><b>하위 '+dN+'명의 체인 표기가 바뀝니다.</b> 하위 회원의 목록 배지·체인 조회 표기가 새 유형 기준으로 표시됩니다.</span></div>';
+  }
   if(F.mode==='edit'&&(rule.kind==='search'||F.type==='PARTNER')){
     html+='<div class="banner bn-amber" id="editNotice">'+warnSvg+'<span><b>변경 시 기존 관계는 종료 처리되고 새 이력이 생성됩니다.</b> 직속 상위 또는 계약 수수료율을 변경하면 변경일('+fmtDate(TODAY)+')부터 새 계약 관계가 적용됩니다.</span></div>';
   }
@@ -883,14 +911,16 @@ function renderParentDD(){
     var sub=m.loginId+' · '+roleLabel(m);
     if(m.status!=='ACTIVE')return '<div class="dd-item off"><span>'+esc(m.name)+'<span class="dd-sub">'+esc(sub)+'</span></span><span class="b-off">비활성 — 선택 불가</span></div>';
     var sel=F.parentId===m.id;
-    return '<div class="dd-item'+(sel?' sel':'')+'" onclick="pickParent('+m.id+','+(ext?'true':'false')+')"><span>'+esc(m.name)+'<span class="dd-sub">'+esc(sub)+'</span></span>'+(sel?checkSvg:'')+'</div>';
+    /* A2 — 동일 유형 적층(예: 영업조직→영업조직)은 별개 정책 대기 항목 */
+    var stack=ext&&m.type===F.type?'<span class="badge b-tbd" style="margin-left:6px">정책 확인 필요(다단 적층)</span>':'';
+    return '<div class="dd-item'+(sel?' sel':'')+'" onclick="pickParent('+m.id+','+(ext?'true':'false')+')"><span>'+esc(m.name)+'<span class="dd-sub">'+esc(sub)+'</span></span>'+stack+(sel?checkSvg:'')+'</div>';
   }
   var primary=members.filter(function(m){return matchPtype(m,rule.ptype)&&hit(m)});
   var html=primary.length?primary.map(function(m){return item(m,false)}).join(''):'<div class="dd-item none">검색 결과 없음</div>';
   if(devSkip){
     var extended=members.filter(function(m){return !matchPtype(m,rule.ptype)&&hit(m)});
     if(extended.length){
-      html+='<div class="dd-cap">skip-level — 전체 유형 (개발자 · 확인 필요)</div>'+extended.map(function(m){return item(m,true)}).join('');
+      html+='<div class="dd-cap">skip-level — 전체 유형 (중간 단계 생략 · 확인 다이얼로그 후 연결)</div>'+extended.map(function(m){return item(m,true)}).join('');
     }
   }
   dd.innerHTML='<div class="dd">'+html+'</div>';
@@ -907,7 +937,11 @@ function pickParent(id,ext){
   F.cycleErr=null;
   if(ext){
     var p=memberById(id);
-    showConfirm('계약 관계 확인','중간 단계 없이 <b>'+esc(roleLabel(p))+'('+esc(p.name)+')</b> 아래에 <b>'+esc(TYPES[F.type].label)+'</b>을(를) 직접 연결합니다. skip-level 연결 허용 여부는 <b>확인 필요</b> 항목입니다. 계속할까요?','계속',function(){
+    /* A2 — 중간 단계 생략 연결은 확정(확인 다이얼로그 후 허용). 동일 유형 다단 적층만 별개 정책 대기 */
+    var desc=p.type===F.type
+      ?'동일 유형을 겹쳐 <b>'+esc(roleLabel(p))+'('+esc(p.name)+')</b> 아래에 같은 유형 <b>'+esc(TYPES[F.type].label)+'</b>을(를) 연결합니다. 다단 적층 허용 여부는 <span class="badge b-tbd">정책 확인 필요(다단 적층)</span> 항목입니다. 계속할까요?'
+      :'중간 단계 없이 <b>'+esc(roleLabel(p))+'('+esc(p.name)+')</b> 아래에 <b>'+esc(TYPES[F.type].label)+'</b>을(를) 직접 연결합니다. skip-level 연결은 확정 동작으로, 이 다이얼로그에서 확인하면 허용됩니다. 계속할까요?';
+    showConfirm('계약 관계 확인',desc,'계속',function(){
       F.parentId=id;F.parentQuery=p.name;applyParentPick();
     });
     return;
@@ -1071,12 +1105,14 @@ function commitAdd(rule){
 }
 function commitEdit(rule){
   var m=memberById(F.memberId);
+  var typeChanged=!!F.origType&&F.type!==F.origType; /* C1 — 유형 정정 */
   m.name=F.name.trim();m.phone=(F.phone||'').trim();m.loginId=F.loginId.trim();m.status=F.status||m.status;m.corporate=F.corporate;m.business=F.business;m.referralCode=F.referralCode.trim();
+  if(typeChanged){m.type=F.type;m.position=F.type==='PARTNER'?F.position:null}
   var msg='<b>수정 완료</b> — '+esc(m.name);
   if(rule.kind==='search'){
     var cur=activeRel(m.id);
     var curDly=cur&&(cur.ratesDly||cur.rates);
-    var changed=!cur||cur.parentId!==F.parentId
+    var changed=typeChanged||!cur||cur.parentId!==F.parentId
       ||String(cur.rates.margin)!==String(F.rates.margin).trim()
       ||String(cur.rates.systemFee)!==String(F.rates.systemFee).trim()
       ||String(cur.rates.transferFeeWon)!==String(F.rates.transferFeeWon).trim()
@@ -1097,6 +1133,14 @@ function commitEdit(rule){
     if(cur2){cur2.status='ENDED';cur2.effectiveTo=TODAY;msg='<b>기존 관계 종료</b> — '+esc(m.name)+' 최상위(직속 상위 없음) 전환 (종료일 '+fmtDate(TODAY)+')'}
     var hasPh2=String(F.phRate.card).trim()!==''||String(F.phRate.dly).trim()!=='';
     m.phRate=hasPh2?{card:String(F.phRate.card).trim(),dly:String(F.phRate.dly).trim()}:null;
+  }else if(typeChanged){
+    /* C1 — 상위 관계를 입력받지 않는 유형으로 정정: 기존 관계는 종료일 기록 */
+    var cur3=activeRel(m.id);
+    if(cur3){cur3.status='ENDED';cur3.effectiveTo=TODAY;msg='<b>기존 관계 종료</b> — '+esc(m.name)+' (종료일 '+fmtDate(TODAY)+') · 새 유형은 이 화면에서 상위 관계를 입력받지 않습니다'}
+  }
+  if(typeChanged){
+    var dN2=descendantsCount(m.id);
+    msg='<b>유형 정정</b> — '+esc(TYPES[F.origType].label)+' → '+esc(roleLabel(m))+' · '+msg+(dN2>0?' · 하위 '+dN2+'명 체인 표기 변경':'');
   }
   closeModal();renderAll();toast(msg);
 }
@@ -1317,7 +1361,7 @@ function showRatePop(el,id){
   if(nodes.length<2)return;
   pop.innerHTML='<div class="rp-title">계약 체인 — 관계별 채권매입 요율 (카드 기준)</div>'+
     '<div style="display:flex;flex-direction:column;gap:8px;padding:8px 0 2px">'+ccStructHTML(nodes,id)+ccRatesHTML(nodes)+'</div>'+
-    '<div class="rp-cap">채권매입 카드 기준 · 전 구간 (예시) — 배달앱 세트는 [보기 ›] 조회 모달 탭에서 확인</div>';
+    '<div class="rp-cap">채권매입 카드 기준 · 전 구간 (예시) — 배달앱 세트는 [보기 ›] 조회 모달 탭에서 확인 · 총판(참여자) 시점은 자기+하위 체인 한정 노출(상위 방향 비노출)</div>';
   var rect=el.getBoundingClientRect();
   pop.style.display='block';
   var pw=pop.offsetWidth,ph=pop.offsetHeight;
@@ -1360,7 +1404,7 @@ function ccJoinboxHTML(m){
   return '<div class="joinbox"><span style="font-size:12px;font-weight:700;color:#374151">가입 링크</span>'+
     '<code class="ref mono">'+esc(joinLink(m))+'</code><span class="rt-ex">(난수 URL·예시)</span>'+
     '<button class="act act-edit" style="cursor:pointer" onclick="copyJoinLink('+m.id+')">복사</button>'+
-    '<span class="xband-cap">추천코드 '+esc(m.referralCode||'—')+' — 가맹점 가입 경로(계약 파트너 체인 시작점)</span></div>';
+    '<span class="xband-cap">추천코드 '+esc(m.referralCode||'—')+' — 가맹점 가입 경로(계약 파트너 체인 시작점) · 발급 주체 정책 — 확인 필요</span></div>';
 }
 function expandRowHTML(m){
   var open='<tr class="xrow"><td colspan="11"><div class="xband">',close='</div></td></tr>';
@@ -1386,7 +1430,8 @@ function expandRowHTML(m){
   var nodes=fullChainNodes(m.id);
   return open+'<div class="xband-h">계약 구조 — 상위 계약 체인 '+tag+'</div>'+
     ccStructHTML(nodes,m.id)+ccRatesHTML(nodes)+ccJoinboxHTML(m)+
-    '<div class="xband-cap">요율 전부 예시 · 카드 기준 — 배달앱 세트·세부 요율(시스템이용료 · 이체수수료 · VAT · 납부/수취)은 [보기 ›] 조회 모달에서 확인</div>'+close;
+    '<div class="xband-cap">요율 전부 예시 · 카드 기준 — 배달앱 세트·세부 요율(시스템이용료 · 이체수수료 · VAT · 납부/수취)은 [보기 ›] 조회 모달에서 확인</div>'+
+    '<div class="xband-cap">총판(참여자) 시점에서는 행 확장·요율 노출이 <b>자기+하위 체인 한정</b> — 상위 방향 요율·가입 링크는 비노출 (B1)</div>'+close;
 }
 /* [비교안 G4] 프로필 안 전체 체인 통합 뷰 토글 */
 function toggleProfileChain(id){
@@ -1532,6 +1577,10 @@ if(HARNESS_STATE){
     E2:function(){openEditModal(41);F.parentQuery='세일즈허브';pickParent(24,false)},
     E3:function(){openEditModal(41);F.rates.margin='0.20';submitForm()},
     E4:function(){openEditModal(41);F.status='INACTIVE';var sel=$('#statusSel');if(sel)sel.value='INACTIVE'},
+    E5:function(){ /* C1 — 유형 정정 데모: 메타플레이가 영업으로 오등록돼 있다는 가정 → 영업조직으로 정정(상위 재검증·재선택 유도·하위 영향 안내) */
+      var mp=memberById(52);mp.type='SALES';mp.position=null;renderAll();
+      openEditModal(52);setType('SALES_ORG');hFocus($('#typeSel'));
+    },
     F1:function(){openProfile(41)},
     F2:function(){openProfile(12)},
     F3:function(){openProfile(3)},
@@ -1684,6 +1733,50 @@ if(location.search.indexOf('selftest')>=0){
     t('v2.1 Q2b: 사이드바 정산 상품관리 — 병행 운영 배지',function(){
       var el=document.getElementById('sbProduct');
       return !!el&&el.innerHTML.indexOf('정산 상품관리')>=0&&el.innerHTML.indexOf('병행 운영')>=0&&el.innerHTML.indexOf('신규 계약은 관계 요율')>=0});
+    /* ── 2026-08-20 이슈 반영 (C1·A2·L2·B5·B1·B2) ── */
+    t('L2: 유형 탭 계층순 — 페이허그→파트너→영업조직→영업',function(){
+      var ids=TABS.map(function(x){return x[0]});
+      return ids[0]==='ALL'&&ids.indexOf('PAYHUG')<ids.indexOf('PARTNER')&&ids.indexOf('PARTNER')<ids.indexOf('SALES_ORG')&&ids.indexOf('SALES_ORG')<ids.indexOf('SALES')});
+    t('B5: 병행 배지 부기 — 참여자(총판) 비노출 승계',function(){
+      var el=document.getElementById('sbProduct');
+      return !!el&&el.innerHTML.indexOf('배정 정보는 참여자(총판) 비노출 승계')>=0});
+    t('B1: 행 확장 — 총판 시점 자기+하위 체인 한정 표기',function(){
+      var h=expandRowHTML(memberById(54));
+      return h.indexOf('자기+하위 체인 한정')>=0&&h.indexOf('상위 방향')>=0});
+    t('B2: 가입 링크 — 발급 주체 정책 확인 필요 라벨',function(){
+      openAddModal();var h=$('#modalBox').innerHTML;var ok=h.indexOf('발급 주체 정책')>=0&&h.indexOf('확인 필요')>=0;closeModal();return ok});
+    t('A2: skip-level 확정 — 교차 유형 다이얼로그에 확인 필요 없음',function(){
+      devSkip=true;openAddModal();onTypeChange('SALES_ORG');F.ddOpen=true;renderParentDD();
+      pickParent(12,true);
+      var d=$('#confirmBox').innerHTML;
+      var ok=d.indexOf('중간 단계 없이')>=0&&d.indexOf('확인 필요')<0&&d.indexOf('확정')>=0;
+      closeConfirm(true);
+      var picked=F.parentId===12;
+      closeModal();devSkip=false;return ok&&picked});
+    t('A2: 동일 유형 적층 — 정책 확인 필요(다단 적층) 배지·다이얼로그',function(){
+      devSkip=true;openAddModal();onTypeChange('SALES_ORG');F.ddOpen=true;renderParentDD();
+      var listOk=$('#parentDD').innerHTML.indexOf('다단 적층')>=0;
+      pickParent(23,true);
+      var dlgOk=$('#confirmBox').innerHTML.indexOf('정책 확인 필요(다단 적층)')>=0;
+      closeConfirm(false);closeModal();devSkip=false;return listOk&&dlgOk});
+    t('E5: 유형 정정 — 상위 부적합 경고+재선택 유도',function(){
+      var m=memberById(52);var t0=m.type,p0=m.position;m.type='SALES';m.position=null;
+      openEditModal(52);onTypeChange('SALES_ORG');
+      var h=$('#contractWrap').innerHTML;
+      var ok=h.indexOf('유형 정정')>=0&&h.indexOf('직속 상위 부적합')>=0&&h.indexOf('하위 2명의 체인 표기')>=0&&F.parentId===null;
+      var blocked=submitForm()===false;
+      closeModal();m.type=t0;m.position=p0;
+      return ok&&blocked});
+    t('E5: 유형 정정 저장 — 관계 종료+새 이력+유형 반영',function(){
+      var m=memberById(52);m.type='SALES';m.position=null;
+      var before=relHistory(52).length;
+      openEditModal(52);onTypeChange('SALES_ORG');
+      F.parentQuery='B파트너';pickParent(15,false);
+      F.rates={margin:'0.28',systemFee:'0.05',transferFeeWon:'300'};
+      F.ratesDly={margin:'0.48',systemFee:'0.05',transferFeeWon:'300'};
+      submitForm();
+      var h=relHistory(52);var ended=h.filter(function(r){return r.status==='ENDED'&&r.effectiveTo===TODAY});
+      return m.type==='SALES_ORG'&&h.length===before+1&&ended.length>=1&&activeRel(52).parentId===15});
     var el=document.getElementById('selftest-result');
     el.textContent='SELFTEST '+pass+'/'+(pass+fail)+' :: '+out.join(' | ');
     document.title='SELFTEST '+pass+'/'+(pass+fail);
