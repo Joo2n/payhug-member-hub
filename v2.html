@@ -820,7 +820,7 @@ function renderContract(){
     var cands=members.filter(function(m){return m.type==='PARTNER'&&m.status==='ACTIVE'&&!activeRel(m.id)&&m.id!==F.memberId});
     html+='<div id="fw-parent"><label class="f-label">직속 상위 <span class="req">*</span></label>'+
       '<select class="f-input" id="partnerParentSel" onchange="onPartnerParent(this.value)">'+
-      '<option value=""'+(F.position?'':' selected')+' disabled>선택하세요 — 없음(최상위) 또는 상위파트너</option>'+
+      '<option value=""'+(F.position?'':' selected')+' disabled>선택하세요 — 없음(최상위)=내가 체인 꼭대기 · 파트너 선택=그 회사의 하위</option>'+
       '<option value="TOP"'+(F.position==='UPPER'?' selected':'')+'>없음 (최상위)</option>'+
       cands.map(function(m){return '<option value="'+m.id+'"'+(F.parentId===m.id?' selected':'')+'>'+esc(m.name)+' ('+esc(m.loginId)+') — 상위파트너</option>'}).join('')+
       '</select>'+
